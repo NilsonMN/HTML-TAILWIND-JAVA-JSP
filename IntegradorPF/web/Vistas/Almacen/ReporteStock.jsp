@@ -38,7 +38,7 @@
                 <nav>
                     <ul>
                         <li class="mb-5">
-                            <a href="ProductosAlmacen.jsp" class="flex items-center p-2 bg-green-600 rounded-md">
+                            <a href="ProductosAl.jsp" class="flex items-center p-2 bg-green-600 rounded-md">
                                 <span class="material-icons mr-2">build</span>
                                 <span>Productos en Almacen</span>
                             </a>

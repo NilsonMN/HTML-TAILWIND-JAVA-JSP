@@ -68,7 +68,16 @@
             </div>
             <div class="p-4 text-right mb-4">
                 <h2 class="mb-4 text-sm font-bold">TECNICO</h2>
-                <p class="text-xs">Andres Guzman Huri</p>
+                <p name="nombre" class="text-sm">${sessionScope.nombre}</p>
+                <p name="apllPat" class="text-sm">${sessionScope.apllPat}</p>
+                <form action="<%= request.getContextPath()%>/LoginServlet" method="POST">
+                    <div class="flex justify-start">
+                        <input type="submit"
+                               class="bg-red-600 rounded-md text-white py-2 px-4 cursor-pointer hover:bg-red-900" 
+                               name="accion"
+                               value="Salir">
+                    </div>
+                </form>
             </div>
         </div>
         <!--CONTENIDO-->
