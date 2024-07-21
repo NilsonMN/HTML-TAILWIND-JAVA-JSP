@@ -3,58 +3,92 @@ package Servlet;
 import Entidad.UsuariosDTO;
 import ModeloDao.UsuariosDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class LoginServlet extends HttpServlet {
-    
+
+    UsuariosDAO usuariosDao = new UsuariosDAO();
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        String usuario = request.getParameter("usuario");
-        String contrasena = request.getParameter("password");
-        String tipoUsuario = request.getParameter("rol");
-        
-        System.out.println("Usuario: " + usuario);
-        System.out.println("Contraseña: " + contrasena);
-        System.out.println("Tipo de usuario: " + tipoUsuario);
-        
-        UsuariosDAO usuariosDao = new UsuariosDAO();
-        UsuariosDTO usuarioDto = usuariosDao.buscarUsuario(usuario, contrasena, tipoUsuario);
-        
-        if(usuarioDto != null && tipoUsuario.equalsIgnoreCase("Conductor")){
-            request.setAttribute("id", usuarioDto.id());
-            request.setAttribute("usuario",usuario);
-            request.setAttribute("contrasena", contrasena);
-            request.setAttribute("tipoUsuario", tipoUsuario);
-            request.getRequestDispatcher("ReportarFallas.jsp").forward(request, response);
+
+        String accion = request.getParameter("accion");
+
+        if ("Salir".equalsIgnoreCase(accion)) {
+            HttpSession session = request.getSession(false);
+            if (session != null) {
+                session.invalidate();
+            }
+            response.sendRedirect(request.getContextPath() + "/index.jsp");
+            return;
         }
-        if(tipoUsuario.equalsIgnoreCase("Administrador")){
-            System.out.println("Tipo de usuario no válido o no definido.");
-            request.getRequestDispatcher("error.jsp").forward(request, response);
+
+        if ("Ingresar".equalsIgnoreCase(accion)) {
+            String usuario = request.getParameter("usuario");
+            String contrasena = request.getParameter("password");
+            String tipoUsuario = request.getParameter("rol").toLowerCase();
+
+            UsuariosDTO usuarioDto = usuariosDao.buscarUsuario(usuario, contrasena, tipoUsuario);
+
+            if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("Conductor")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuarioDto.id());
+                session.setAttribute("nombre", usuarioDto.nombre());
+                session.setAttribute("apllPat", usuarioDto.apllPat());
+
+                String path = request.getContextPath() + "/Vistas/Conductor/ReportarFallas.jsp";
+                response.sendRedirect(path);
+            } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("tecnico")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuarioDto.id());
+                session.setAttribute("nombre", usuarioDto.nombre());
+                session.setAttribute("apllPat", usuarioDto.apllPat());
+
+                String path = request.getContextPath() + "/error.jsp";//colocar su ruta
+                response.sendRedirect(path);
+            } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("supervisor")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuarioDto.id());
+                session.setAttribute("nombre", usuarioDto.nombre());
+                session.setAttribute("apllPat", usuarioDto.apllPat());
+
+                String path = request.getContextPath() + "/error2.jsp";//colocar su ruta
+                response.sendRedirect(path);
+            }else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("adminalmacen")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuarioDto.id());
+                session.setAttribute("nombre", usuarioDto.nombre());
+                session.setAttribute("apllPat", usuarioDto.apllPat());
+
+                String path = request.getContextPath() + "/error3.jsp";//colocar su ruta
+                response.sendRedirect(path);
+            }
+            else {
+                response.sendRedirect(request.getContextPath() + "/login.jsp?error=Usuario o contraseña incorrectos");
+            }
         }
     }
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
-
+    }
 }

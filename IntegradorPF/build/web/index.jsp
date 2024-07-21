@@ -17,34 +17,40 @@
 
         <div class="flex items-center justify-center">
             <div class="w-full md:w-1/2 lg:w-1/5">
-                <form class="bg-white px-8 pt-6 pb-8 mb-4 font-medium rounded-lg shadow-lg" action="LoginServlet" method="post" style="font-size: 130%">
+                <form class="bg-white px-8 pt-6 pb-8 mb-4 font-medium rounded-lg shadow-lg" 
+                      action="<%= request.getContextPath()%>/LoginServlet" 
+                      method="post" 
+                      style="font-size: 130%">
                     <div class="mb-4">
                         <label class="block text-1xl font-bold mb-2">Usuario:</label>
-                        <input class="rounded-md border-2 border-black my-3 px-4 py-2 w-full" type="text" id="usuario" name="usuario" required>
+                        <input class="rounded-md border-2 border-black my-3 px-4 py-2 w-full" 
+                               type="text"
+                               id="usuario" 
+                               name="usuario" required>
                     </div>
                     <div class="mb-6">
                         <label class="block text-1xl font-bold mb-2">Contraseña:</label>
-                        <input class="rounded-md border-2 border-black my-3 px-4 py-2 w-full" type="password" id="password" name="password" required>
+                        <input class="rounded-md border-2 border-black my-3 px-4 py-2 w-full" 
+                               type="password" 
+                               id="password" 
+                               name="password" required>
                     </div>
                     <div class="mb-4 text-sm">
-                        <label class="block text-1xl font-bold mb-2">Rol:</label>
-                        <div class="flex items-center space-x-4">
-                            <label for="conductor" class="flex items-center">
-                                <input type="radio" id="conductor" name="rol" value="conductor" class="mr-2">
-                                Conductor
-                            </label>
-                            <label for="administrador" class="flex items-center">
-                                <input type="radio" id="administrador" name="rol" value="administrador" class="mr-2">
-                                Administrador
-                            </label>
-                            <label for="tecnico" class="flex items-center">
-                                <input type="radio" id="tecnico" name="rol" value="tecnico" class="mr-2">
-                                Técnico
-                            </label>
-                        </div>
+                        <label class="block text-1xl font-bold mb-2" for="rol">Rol:</label>
+                        <select id="rol" name="rol" 
+                                class="block w-full mt-1 border border-black rounded-md">
+                            <option value="conductor">Conductor</option>
+                            <option value="tecnico">Técnico</option>
+                            <option value="supervisor">Supervisor</option>
+                            <option value="adminalmacen">Adm. Almacen</option>
+                            <option value="adminVehiculo">Adm. Vehículos</option>
+                        </select>
                     </div>
                     <div class="text-center">
-                        <button type="submit" class="bg-blue-900 rounded-md text-white py-2 cursor-pointer w-full hover:bg-blue-800" name="btnIngresar">Ingresar</button>
+                        <input type="submit" 
+                                class="bg-blue-900 rounded-md text-white py-2 cursor-pointer w-full hover:bg-blue-800" 
+                                name="accion"
+                                value="Ingresar">
                     </div>
                 </form>
             </div>

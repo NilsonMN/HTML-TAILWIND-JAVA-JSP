@@ -3,6 +3,7 @@ package Servlet;
 import Entidad.SaveFallasDTO;
 import Entidad.UsuariosDTO;
 import Entidad.VehiculoDTO;
+import Entidad.VehiMantDTO;
 import ModeloDao.SaveFallasDAO;
 import ModeloDao.UsuariosDAO;
 import ModeloDao.VehiculoDAO;
@@ -12,12 +13,13 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ReportarFallasServlet", urlPatterns = {"/ReportarFallasServlet"})
 public class ReportarFallasServlet extends HttpServlet {
-    
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-        throws ServletException, IOException {
+            throws ServletException, IOException {
 
         String action = request.getParameter("action");
 
@@ -34,6 +36,8 @@ public class ReportarFallasServlet extends HttpServlet {
 
                 if (usuariosDto != null) {
                     request.setAttribute("id", usuariosDto.id());
+                    request.setAttribute("nombre", usuariosDto.nombre());
+                    request.setAttribute("apllPat", usuariosDto.apllPat());
                 } else {
                     request.setAttribute("id", "No encontrado");
                     request.setAttribute("usuarioNoEncontrado", true);
@@ -48,7 +52,7 @@ public class ReportarFallasServlet extends HttpServlet {
                     request.setAttribute("modelo", "No encontrado");
                 }
 
-                request.getRequestDispatcher("/ReportarFallas.jsp").forward(request, response);
+                request.getRequestDispatcher("/Vistas/Conductor/ReportarFallas.jsp").forward(request, response);
 
             } else if ("reportar".equals(action)) {
                 String tipoFalla = request.getParameter("tipoFallo");
@@ -56,44 +60,50 @@ public class ReportarFallasServlet extends HttpServlet {
                 String id = request.getParameter("id");
                 String placa = request.getParameter("placa");
 
-                SaveFallasDTO saveFallasDto = new SaveFallasDTO(tipoFalla, 
+                SaveFallasDTO saveFallasDto = new SaveFallasDTO(tipoFalla,
                         null, descripcion, id, placa, null);
-                
+
                 request.setAttribute("mensaje", "Falla reportada exitosamente");
-                
+
                 UsuariosDAO usuariosDao = new UsuariosDAO();
                 UsuariosDTO usuariosDto = usuariosDao.getId(id);
 
                 if (usuariosDto != null) {
                     request.setAttribute("id", usuariosDto.id());
+                    request.setAttribute("nombre", usuariosDto.nombre());
+                    request.setAttribute("apllPat", usuariosDto.apllPat());
                 } else {
                     request.setAttribute("id", "No encontrado");
                     request.setAttribute("usuarioNoEncontrado", true);
                 }
-                
+
                 SaveFallasDAO saveFallasDao = new SaveFallasDAO();
                 saveFallasDao.registrar(saveFallasDto);
+                
+                Integer codMantenimiento = saveFallasDao.codMantenimiento(tipoFalla);
+                
+                VehiMantDTO vehiMantDto = new VehiMantDTO(placa, codMantenimiento);
+                saveFallasDao.saveVehiMant(vehiMantDto);
 
-                request.getRequestDispatcher("/ReportarFallas.jsp").forward(request, response);
+                request.getRequestDispatcher("/Vistas/Conductor/ReportarFallas.jsp").forward(request, response);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
     }
-    
+
     @Override
     public String getServletInfo() {
         return "Short description";

@@ -1,7 +1,9 @@
 package Entidad;
 
 public record UsuariosDTO(
-        Integer id
+        Integer id,
+        String nombre,
+        String apllPat
         ) {
 
 }
