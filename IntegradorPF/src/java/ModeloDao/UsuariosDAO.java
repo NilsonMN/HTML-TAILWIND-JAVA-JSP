@@ -20,6 +20,9 @@ public class UsuariosDAO {
     
     private static final String admAlmacenQuery = "SELECT codEncargadoAlm, nombre, apllPat "
             + "FROM encargadoalmacen WHERE usuarioEncAlm = ? AND contrasenaEncAlm = ?";
+    
+    private static final String admVehiculoQuery = "SELECT codAdmVehiculo, nombre, apllPat "
+            + "FROM admVehiculos WHERE usuarioAdmVehi = ? AND contrasenaAdmVehi = ?";
 
     public UsuariosDTO buscarUsuario(String usuario, String contrasena, String tipoUsuario) {
         
@@ -88,6 +91,8 @@ public class UsuariosDAO {
                 return tecnicoQuery;
             case "adminalmacen":
                 return admAlmacenQuery;
+            case "adminvehiculos":
+                return admVehiculoQuery;
             default:
                 return null;
         }

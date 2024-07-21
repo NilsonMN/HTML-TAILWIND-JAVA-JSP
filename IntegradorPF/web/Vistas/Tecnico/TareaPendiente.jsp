@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ page import="ModeloDAO.MantenimientoDAO" %>
+<%@page import="ModeloDao.MantenimientoDAO" %>
 <%@ page import="java.util.List" %>
 <%@ page import="Entidad.Mantenimiento" %>
 <%@ page import="Entidad.Vehiculo" %>

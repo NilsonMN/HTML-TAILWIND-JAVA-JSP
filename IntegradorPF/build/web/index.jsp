@@ -43,7 +43,7 @@
                             <option value="tecnico">Técnico</option>
                             <option value="supervisor">Supervisor</option>
                             <option value="adminalmacen">Adm. Almacen</option>
-                            <option value="adminVehiculo">Adm. Vehículos</option>
+                            <option value="adminvehiculos">Adm. Vehículos</option>
                         </select>
                     </div>
                     <div class="text-center">

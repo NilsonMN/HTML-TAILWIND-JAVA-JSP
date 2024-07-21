@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("nombre", usuarioDto.nombre());
                 session.setAttribute("apllPat", usuarioDto.apllPat());
 
-                String path = request.getContextPath() + "/error.jsp";//colocar su ruta
+                String path = request.getContextPath() + "/Vistas/Tecnico/TareaCurso.jsp";
                 response.sendRedirect(path);
             } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("supervisor")) {
                 HttpSession session = request.getSession();
@@ -58,15 +58,23 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("nombre", usuarioDto.nombre());
                 session.setAttribute("apllPat", usuarioDto.apllPat());
 
-                String path = request.getContextPath() + "/error2.jsp";//colocar su ruta
+                String path = request.getContextPath() + "/error.jsp";//completar la ruta
                 response.sendRedirect(path);
-            }else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("adminalmacen")) {
+            } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("adminalmacen")) {
                 HttpSession session = request.getSession();
                 session.setAttribute("id", usuarioDto.id());
                 session.setAttribute("nombre", usuarioDto.nombre());
                 session.setAttribute("apllPat", usuarioDto.apllPat());
 
-                String path = request.getContextPath() + "/error3.jsp";//colocar su ruta
+                String path = request.getContextPath() + "/Vistas/Almacen/ProductosAl.jsp";
+                response.sendRedirect(path);
+            } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("adminvehiculos")) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuarioDto.id());
+                session.setAttribute("nombre", usuarioDto.nombre());
+                session.setAttribute("apllPat", usuarioDto.apllPat());
+
+                String path = request.getContextPath() + "/MenuFlota.jsp";//completar la ruta
                 response.sendRedirect(path);
             }
             else {

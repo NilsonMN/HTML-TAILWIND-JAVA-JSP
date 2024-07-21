@@ -1,5 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@page import="ModeloDAO.MaterialesDAO, Entidad.Materiales, java.util.List, java.util.ArrayList, java.sql.SQLException"%>
+<%@page import="ModeloDao.MaterialesDAO, Entidad.Materiales, java.util.List, java.util.ArrayList, java.sql.SQLException" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
