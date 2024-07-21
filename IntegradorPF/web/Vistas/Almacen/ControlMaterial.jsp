@@ -43,21 +43,27 @@
                 <nav>
                     <ul>
                         <li class="mb-5">
-                            <a href="ProductosAlmacen.html" class="flex items-center p-2 ">
+                            <a href="ProductosAlmacen.jsp" class="flex items-center p-2 ">
                                 <span class="material-icons mr-2">build</span>
                                 <span>Productos en Almacen</span>
                             </a>
                         </li>
                         <li class="mb-5">
-                            <a href="SolicitudMats.html" class="flex items-center p-2 ">
+                            <a href="SolicitudMats.jsp" class="flex items-center p-2 ">
                                 <span class="material-icons mr-2">build</span>
                                 <span>Solicitudes Taller</span>
                             </a>
                         </li>
                         <li class="mb-5">
-                            <a href="PedidoProv.html" class="flex items-center p-2 bg-green-600 rounded-md">
+                            <a href="SolicitudMats.jsp" class="flex items-center p-2 ">
                                 <span class="material-icons mr-2">build</span>
-                                <span>Pedido Proveedores</span>
+                                <span>Solicitudes Taller</span>
+                            </a>
+                        </li>
+                        <li class="mb-5">
+                            <a href="ControlMaterial.jsp" class="flex items-center p-2 bg-green-600 rounded-md">
+                                <span class="material-icons mr-2">build</span>
+                                <span>Control Materiales</span>
                             </a>
                         </li>
                     </ul>
