@@ -1,4 +1,5 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="ModeloDAO.MaterialesDAO, Entidad.Materiales, java.util.List, java.util.ArrayList, java.sql.SQLException"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,7 +104,7 @@
         }
 
         function anadirAMateriales() {
-            const nombre = document.getElementById('materialNombre').value;
+            const nombre = document.getElementById('materialNombre').selectedOptions[0].text;
             const cantidad = document.getElementById('materialCantidad').value;
             if (nombre && cantidad) {
                 const tabla = document.getElementById('tablaMateriales').getElementsByTagName('tbody')[0];
@@ -112,7 +113,6 @@
                 nuevaFila.insertCell(1).textContent = cantidad;
                 const celdaAcciones = nuevaFila.insertCell(2);
                 celdaAcciones.innerHTML = '<button class="bg-red-500 text-white py-1 px-2 rounded" onclick="eliminarFila(this)">Eliminar</button>';
-                document.getElementById('materialNombre').value = '';
                 document.getElementById('materialCantidad').value = '';
             }
         }
@@ -198,8 +198,20 @@
                         <div class="flex">
                             <div class="w-1/2 pr-4">
                                 <div class="mb-4">
-                                    <label for="materialNombre" class="block text-gray-700">Nombre del Material:</label>
-                                    <input id="materialNombre" type="text" class="w-full px-3 py-2 border border-gray-300 rounded" />
+                                    <label for="materialNombre" class="block text-gray-700">Material:</label>
+                                    <select id="materialNombre" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <% 
+                                        List<Materiales> listaMateriales = new ArrayList<>();
+                                        MaterialesDAO materialesDAO = new MaterialesDAO();
+                                        listaMateriales = materialesDAO.obtenerMateriales();
+
+                                        for (Materiales material : listaMateriales) {
+                                        %>
+                                            <option value="<%= material.getCodMaterial() %>"><%= material.getNombres() %></option>
+                                        <% 
+                                        } 
+                                        %>
+                                    </select>
                                 </div>
                                 <div class="mb-4">
                                     <label for="materialCantidad" class="block text-gray-700">Cantidad:</label>
