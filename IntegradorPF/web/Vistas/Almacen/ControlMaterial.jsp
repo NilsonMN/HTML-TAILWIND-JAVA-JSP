@@ -6,6 +6,9 @@
 
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="Entidad.*"%>
+<%@page import="ModeloDao.*"%>
+<%@page import="java.util.ArrayList"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -30,6 +33,11 @@
                 p{
                     transform: scale(1.1);
                 }
+            }
+            #VentEmer
+            {
+                hidden:1;
+                z-index: 2;
             }
         </style>
     </head>

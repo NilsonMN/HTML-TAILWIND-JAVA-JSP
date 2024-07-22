@@ -78,7 +78,7 @@ public class LoginServlet extends HttpServlet {
                 response.sendRedirect(path);
             }
             else {
-                response.sendRedirect(request.getContextPath() + "/login.jsp?error=Usuario o contraseña incorrectos");
+                response.sendRedirect(request.getContextPath() + "/index.jsp?error=Usuario o contraseña incorrectos");
             }
         }
     }
