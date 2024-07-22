@@ -4,6 +4,7 @@
     Author     : livia
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -85,141 +86,141 @@
         </div>
         <!--contenido-->
         <div class="w-9/12 h-screen overflow-y-auto p-8" style="margin-left: 25%;">
-            <div class="flex items-center justify-center min-h-screen bg-gray-900">
-                <div class="col-span-12">
-                    <div class="overflow-auto lg:overflow-visible ">
-                        <table class="table text-gray-400 border-separate space-y-6 text-sm">
-                            <thead class="bg-gray-800 text-gray-500">
-                                <tr>
-                                    <th class="p-3">Nombre</th>
-                                    <th class="p-3 text-left">Category</th>
-                                    <th class="p-3 text-left">Price</th>
-                                    <th class="p-3 text-left">Status</th>
-                                    <th class="p-3 text-left">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr class="bg-gray-800">
-                                    <td class="p-3">
-                                        <div class="flex align-items-center">
-                                            <img class="rounded-full h-12 w-12  object-cover" src="https://images.unsplash.com/photo-1613588718956-c2e80305bf61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=634&q=80" alt="unsplash image">
-                                            <div class="ml-3">
-                                                <div class="">Appple</div>
-                                                <div class="text-gray-500">mail@rgmail.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-3">
-                                        Technology
-                                    </td>
-                                    <td class="p-3 font-bold">
-                                        200.00$
-                                    </td>
-                                    <td class="p-3">
-                                        <span class="bg-green-400 text-gray-50 rounded-md px-2">available</span>
-                                    </td>
-                                    <td class="p-3 ">
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100  mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100  ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-gray-800">
-                                    <td class="p-3">
-                                        <div class="flex align-items-center">
-                                            <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1423784346385-c1d4dac9893a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="unsplash image">
-                                            <div class="ml-3">
-                                                <div class="">Realme</div>
-                                                <div class="text-gray-500">mail@rgmail.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-3">
-                                        Technology
-                                    </td>
-                                    <td class="p-3 font-bold">
-                                        200.00$
-                                    </td>
-                                    <td class="p-3">
-                                        <span class="bg-red-400 text-gray-50 rounded-md px-2">no stock</span>
-                                    </td>
-                                    <td class="p-3">
-                                        <a href="#" class="text-gray-400 hover:text-gray-100  mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr class="bg-gray-800">
-                                    <td class="p-3">
-                                        <div class="flex align-items-center">
-                                            <img class="rounded-full h-12 w-12   object-cover" src="https://images.unsplash.com/photo-1600856209923-34372e319a5d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2135&q=80" alt="unsplash image">
-                                            <div class="ml-3">
-                                                <div class="">Samsung</div>
-                                                <div class="text-gray-500">mail@rgmail.com</div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td class="p-3">
-                                        Technology
-                                    </td>
-                                    <td class="p-3 font-bold">
-                                        200.00$
-                                    </td>
-                                    <td class="p-3">
-                                        <span class="bg-yellow-400 text-gray-50  rounded-md px-2">start sale</span>
-                                    </td>
-                                    <td class="p-3">
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 mr-2">
-                                            <i class="material-icons-outlined text-base">visibility</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 mx-2">
-                                            <i class="material-icons-outlined text-base">edit</i>
-                                        </a>
-                                        <a href="#" class="text-gray-400 hover:text-gray-100 ml-2">
-                                            <i class="material-icons-round text-base">delete_outline</i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <!--agregarMaterial-->
+            <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
+                <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>Agregar Material</h1></a>
+            </div>
+            <!-- MODAL NUEVO MATERIAL -->
+            <div id="VentEmer" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 items-center justify-center overflow-x-auto">
+                <div class="bg-white border border-4 rounded-lg shadow relative m-10">
+
+                    <div class="flex items-start justify-between p-5 border-b rounded-t">
+                        <h3 class="text-xl font-semibold">
+                            Edit product
+                        </h3>
+                        <a href="#" class="bg-red-500 text-white px-4 py-2 rounded absolute top-5 right-4">Cerrar</a>
                     </div>
+                    <!-- CUERPOMODAL -->
+                    <form action="<%= request.getContextPath()%>/ControlMaterialServlet">
+                        <div class="p-6 space-y-6">
+
+                            <div class="grid grid-cols-6 gap-6">
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="nombre" class="text-sm font-medium text-gray-900 block mb-2">Nombre del Material</label>
+                                    <input type="text" name="nombre" id="nombre" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="stock" class="text-sm font-medium text-gray-900 block mb-2">Cantidad</label>
+                                    <input type="number" name="stock" id="stock" class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-cyan-600 focus:border-cyan-600 block w-full p-2.5" required="">
+                                </div>
+                                <div class="col-span-6 sm:col-span-3">
+                                    <label for="almacen" class="text-sm font-medium text-gray-900 block mb-2">Almacen</label>
+                                    <select id="almacen" name="almacen" class="w-full px-3 py-2 border border-gray-300 rounded">
+                                        <%
+                                            List<Almacen> lal = AlmacenDAO.listarAl();
+                                            AlmacenDAO aldao = new AlmacenDAO();
+                                            for (Almacen alma : lal) {
+                                        %>
+                                        <option value="<%= alma.getId()%>"><%=aldao.obtDep(alma.getDep())%> <%= alma.getDireccion()%></option>
+                                        <%
+                                            }
+                                        %>
+                                    </select>                               
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="p-6 border-t border-gray-200 rounded-b">
+                            <button name="accion" id="Agregar" value="Agregar" class="text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center" type="submit">Guardar</button>
+                        </div>
+                    </form>
                 </div>
             </div>
-            <style>
-                .table {
-                    border-spacing: 0 15px;
-                }
+            <!-- FIN AGREGAR MATERIAL -->
+            <!-- CODIGO DE ITERACION DE ALMACEN -->
+            <% List<Almacen> al = AlmacenDAO.listarAl();
+                String nom = "";
+                AlmacenDAO adao = new AlmacenDAO();
+                for (Almacen alm : al) {%>
+            <!--FIN CODIGO DE ITERACION-->
+            <!-- componente -->
+            <div class="p-6 overflow-scroll px-0">
 
-                i {
-                    font-size: 1rem !important;
-                }
 
-                .table tr {
-                    border-radius: 20px;
-                }
+                <table class="mt-4 w-full min-w-max table-auto text-left">
+                    <thead>
+                        <tr>
+                            <th>
+                                Sede: 
+                                <%=adao.obtDep(alm.getDep())%> <%= alm.getDireccion()%>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                                <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">ID
+                                </p>
+                            </th>
+                            <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                                <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">Nombre
+                                </p>
+                            </th>
+                            <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                                <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">Stock
+                                </p>
+                            </th>
+                            <th class="cursor-pointer border-y border-blue-gray-100 bg-blue-gray-50/50 p-4 transition-colors hover:bg-blue-gray-50">
+                                <p class="antialiased font-sans text-sm text-blue-gray-900 flex items-center justify-between gap-2 font-normal leading-none opacity-70">Accion
+                                </p>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%
+                            List<Materiales> mats = MaterialesDAO.listarMatAl(alm.getId());
+                            for (Materiales m : mats) {
+                        %>
+                        <tr>
+                            <!-- ID -->
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex flex-col">
+                                        <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal"><%=m.getCodMaterial()%></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- NOMBRE -->
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <div class="flex items-center gap-3">
+                                    <div class="flex flex-col">
+                                        <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal"><%=m.getNombres()%></p>
+                                    </div>
+                                </div>
+                            </td>
+                            <!-- STOCK -->
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <div class="flex flex-col">
+                                    <p class="block antialiased font-sans text-sm leading-normal text-blue-gray-900 font-normal"><%=m.getStock()%></p>
+                                </div>
+                            </td>
 
-                tr td:nth-child(n+5),
-                tr th:nth-child(n+5) {
-                    border-radius: 0 .625rem .625rem 0;
-                }
-
-                tr td:nth-child(1),
-                tr th:nth-child(1) {
-                    border-radius: .625rem 0 0 .625rem;
-                }
-            </style>
+                            <!-- EDIT -->
+                            <td class="p-4 border-b border-blue-gray-50">
+                                <button class="relative align-middle select-none font-sans font-medium text-center uppercase transition-all disabled:opacity-50 disabled:shadow-none disabled:pointer-events-none w-10 max-w-[40px] h-10 max-h-[40px] rounded-lg text-xs text-gray-900 hover:bg-gray-900/10 active:bg-gray-900/20" type="button">
+                                    <span class="absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" class="h-4 w-4">
+                                        <path d="M21.731 2.269a2.625 2.625 0 00-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 000-3.712zM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 00-1.32 2.214l-.8 2.685a.75.75 0 00.933.933l2.685-.8a5.25 5.25 0 002.214-1.32L19.513 8.2z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </td>
+                        </tr>
+                        <%}%>
+                    </tbody>
+                </table>
+            </div>
+            <%}%>
+            <!-- fin componente -->
         </div>
         <!--<!-- fin contenido -->
     </body>
