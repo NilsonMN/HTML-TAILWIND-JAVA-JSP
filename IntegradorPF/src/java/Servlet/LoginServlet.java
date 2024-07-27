@@ -50,7 +50,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("nombre", usuarioDto.nombre());
                 session.setAttribute("apllPat", usuarioDto.apllPat());
 
-                String path = request.getContextPath() + "/Vistas/Tecnico/TareaCurso.jsp";
+                String path = request.getContextPath() + "/Vistas/Tecnico/TareaPendiente.jsp";
                 response.sendRedirect(path);
             } else if (usuarioDto != null && tipoUsuario.equalsIgnoreCase("supervisor")) {
                 HttpSession session = request.getSession();
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("nombre", usuarioDto.nombre());
                 session.setAttribute("apllPat", usuarioDto.apllPat());
 
-                String path = request.getContextPath() + "/MenuFlota.jsp";//completar la ruta
+                String path = request.getContextPath()+"/MenuFlota.jsp";//completar la ruta
                 response.sendRedirect(path);
             }
             else {

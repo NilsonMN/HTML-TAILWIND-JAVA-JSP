@@ -12,6 +12,13 @@ public class Tecnico {
     public Tecnico() {
     }
 
+    public Tecnico(int codTecnico, String nombre, String apllPat, String apllMat) {
+        this.codTecnico = codTecnico;
+        this.nombre = nombre;
+        this.apllPat = apllPat;
+        this.apllMat = apllMat;
+    }
+
     public Tecnico(int codTecnico, String nombre, String apllPat, String apllMat, String telefono, String usuarioTec, String contrasenatTec) {
         this.codTecnico = codTecnico;
         this.nombre = nombre;

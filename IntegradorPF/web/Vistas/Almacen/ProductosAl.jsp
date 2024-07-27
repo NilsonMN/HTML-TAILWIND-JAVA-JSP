@@ -4,6 +4,12 @@
     Author     : livia
 --%>
 
+<%@page import="ModeloDao.MaterialesDAO"%>
+<%@page import="Entidad.Materiales"%>
+<%@page import="ModeloDao.AlmacenDAO"%>
+<%@page import="Entidad.Almacen"%>
+<%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="es">
@@ -84,8 +90,14 @@
         <div class="w-9/12 h-screen overflow-y-auto p-8" style="margin-left: 25%;">
             <h1 class="text-3xl font-bold mb-8 text-[#1E415A] text-center">PRODUCTOS EN ALMACEN</h1>
             <div class="grid grid-cols-1 gap-8 mx-10"> 
+                <% List<Almacen> al = AlmacenDAO.listarAl();
+                    String nom = "";
+                    AlmacenDAO adao = new AlmacenDAO();
+                    for (Almacen alm : al) {
+
+                %>
                 <div class="rounded px-16 py-10 bg-white shadow-2xl">
-                    <h3 class="text-left font-bold text-3xl">Sede 1</h3>
+                    <h3 class="text-left font-bold text-3xl">Sede: <%=adao.obtDep(alm.getDep())%> <%= alm.getDireccion()%></h3>
 
                     <table class="w-full border border-gray-800 mt-10">
                         <thead class="border border-gray-400">
@@ -95,94 +107,32 @@
                                 <th scope="col" class="px-6 py-4 text-center">Cantidad</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="w-1/3 h-10 mx-auto mt-8">
-                        <a href="ReporteStock.jsp"><div class="rounded bg-[#1E415A]  hover:bg-[#031936] text-white text-center h-3/4 font-bold content-center mx-auto">GENERAR REPORTE</div></a>
-                    </div>
-                </div>
-                <div class="rounded px-16 py-10 bg-white shadow-2xl">
-                    <h3 class="text-left font-bold text-3xl">Sede 2</h3>
 
-                    <table class="w-full border border-gray-800 mt-10">
-                        <thead class="border border-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-4">Nombre</th>
-                                <th scope="col" class="px-6 py-4">Descripcion</th>
-                                <th scope="col" class="px-6 py-4">Cantidad</th>
-                            </tr>
-                        </thead>
                         <tbody>
+                            <%
+                                List<Materiales> mats = MaterialesDAO.listarMatAl(alm.getId());
+                                for (Materiales m : mats) {
+                            %>
                             <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
+                                <td class="whitespace-nowrap px-6 py-4"><%=m.getNombres()%></td>
+                                <td class="whitespace-nowrap px-6 py-4">Salida/Entrada/Devolucion</td>
+                                <td class="whitespace-nowrap px-6 py-4 text-center"><%=m.getStock()%></td>
                             </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <div class="w-1/3 h-10 mx-auto mt-8">
-                        <a href="ReporteStock.jsp"><div class="rounded bg-[#1E415A] hover:bg-[#031936] text-white text-center h-3/4 font-bold content-center mx-auto">GENERAR REPORTE</div></a>
-                    </div>
-                </div>
-                <div class="rounded px-16 py-10 bg-white shadow-2xl">
-                    <h3 class="text-left font-bold text-3xl">Sede 3</h3>
 
-                    <table class="w-full border border-gray-800 mt-10">
-                        <thead class="border border-gray-400">
-                            <tr>
-                                <th scope="col" class="px-6 py-4">Nombre</th>
-                                <th scope="col" class="px-6 py-4">Descripcion</th>
-                                <th scope="col" class="px-6 py-4">Cantidad</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
-                            <tr class="border border-gray-400">
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum</td>
-                                <td class="whitespace-nowrap px-6 py-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, alias.</td>
-                                <td class="whitespace-nowrap px-6 py-4 text-center">42</td>
-                            </tr>
+                            <%
+                                }
+                            %>
                         </tbody>
+
                     </table>
                     <div class="w-1/3 h-10 mx-auto mt-8">
-                        <a href="ReporteStock.jsp"><div class="rounded bg-[#1E415A] hover:bg-[#031936] text-white text-center h-3/4 font-bold content-center mx-auto">GENERAR REPORTE</div></a>
-                    </div>
+                        <a href="<%= request.getContextPath()%>/GenerarReporteServlet?almacenId=<%= alm.getId()%>">
+                            <div class="rounded bg-[#1E415A] hover:bg-[#031936] text-white text-center h-3/4 font-bold content-center mx-auto">GENERAR REPORTE</div>
+                        </a></div>
                 </div>
+                <%
+                    }
+                %>
             </div>
         </div>
     </body>

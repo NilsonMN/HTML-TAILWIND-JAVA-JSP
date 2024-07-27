@@ -3,6 +3,7 @@ package ModeloDao;
 import Entidad.Materiales;
 import Conexion.Conexion;
 import Entidad.Almacen;
+import Entidad.SoliMats;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -128,5 +129,81 @@ public class MaterialesDAO {
                 e.printStackTrace();
             }
         }
+    }
+
+    public boolean actualizarCantidad(List<SoliMats> soliMatsList) 
+    {
+        boolean st = true;
+        Connection con = null;
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        try {
+            con = Conexion.getConnection();
+            String sql = "UPDATE materiales SET stock = ? WHERE codMaterial = ?";
+            stmt = con.prepareStatement(sql);
+            for (SoliMats soliMats : soliMatsList) {
+                stmt.setInt(1, soliMats.getCantidad());
+                stmt.setInt(2, soliMats.getCodMaterial());
+                stmt.addBatch();
+            }
+            int[] resultados = stmt.executeBatch();
+
+            for (int resultado : resultados) {
+                if (resultado != PreparedStatement.SUCCESS_NO_INFO) {
+                    st = false;
+                    break;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+            st = false;
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return st;
+    }
+
+    public boolean borrar(int id) {
+        Connection con = null;
+        boolean b=false;
+        PreparedStatement stmt = null;
+        try {
+            String query = "DELETE FROM material_tarea WHERE codTarea = ?";
+            stmt = con.prepareStatement(query);
+            stmt.setInt(1, id);
+            int filasAfectadas = stmt.executeUpdate();
+            b = (filasAfectadas > 0);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            if (stmt != null) {
+                try {
+                    stmt.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+            if (con != null) {
+                try {
+                    con.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return b;
     }
 }

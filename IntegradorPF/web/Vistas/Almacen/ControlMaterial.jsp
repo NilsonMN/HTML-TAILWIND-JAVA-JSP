@@ -34,9 +34,9 @@
                     transform: scale(1.1);
                 }
             }
-            #VentEmer
+            #VentEmer:target
             {
-                hidden:1;
+                display:flex;
                 z-index: 2;
             }
         </style>

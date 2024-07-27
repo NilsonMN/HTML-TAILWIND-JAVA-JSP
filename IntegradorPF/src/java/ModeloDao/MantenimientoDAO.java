@@ -12,17 +12,16 @@ import java.util.List;
 
 public class MantenimientoDAO {
 
-    private static final String MANTENIMIENTO_VEHICULO = 
-        "SELECT v.marcar, v.modelo, v.kilometraje, v.placa, m.tipo " +
-        "FROM vehiculo v " +
-        "JOIN vehi_mant vm ON v.placa = vm.placa " +
-        "JOIN mantenimiento m ON m.codMantenimiento = vm.codMantenimiento";
+    private static final String MANTENIMIENTO_VEHICULO
+            = "SELECT v.marcar, v.modelo, v.kilometraje, v.placa, m.tipo "
+            + "FROM vehiculo v "
+            + "JOIN vehi_mant vm ON v.placa = vm.placa "
+            + "JOIN mantenimiento m ON m.codMantenimiento = vm.codMantenimiento";
 
     public List<Mantenimiento> obtenerMantenimientosVehiculos() {
         List<Mantenimiento> mantenimientos = new ArrayList<>();
 
-        try (Connection connection = Conexion.getConnection();
-             PreparedStatement preparedStatement = connection.prepareStatement(MANTENIMIENTO_VEHICULO)) {
+        try (Connection connection = Conexion.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(MANTENIMIENTO_VEHICULO)) {
 
             ResultSet rs = preparedStatement.executeQuery();
 
@@ -36,7 +35,7 @@ public class MantenimientoDAO {
                 Vehiculo vehiculo = new Vehiculo(placa, marca, modelo, kilometraje);
                 Mantenimiento mantenimiento = new Mantenimiento();
                 mantenimiento.setTipo(tipo);
-                mantenimiento.setVehiculo(vehiculo); 
+                mantenimiento.setVehiculo(vehiculo);
                 mantenimientos.add(mantenimiento);
             }
 
@@ -46,5 +45,22 @@ public class MantenimientoDAO {
 
         return mantenimientos;
     }
-}
+    Mantenimiento objMantenimiento = null;
 
+    public Mantenimiento buscarPorIdMante(int id) {
+        try (Connection connection = Conexion.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement("SELECT * FROM mantenimiento WHERE codMantenimiento = ?")) {
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
+
+            if (rs.next()) {
+                int codMantenimiento = rs.getInt("codMantenimiento");
+                String tipo = rs.getString("tipo");
+                objMantenimiento = new Mantenimiento(codMantenimiento, tipo);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return objMantenimiento;
+    }
+}

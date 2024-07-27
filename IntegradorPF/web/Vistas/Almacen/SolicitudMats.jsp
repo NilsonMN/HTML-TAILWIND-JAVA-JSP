@@ -3,8 +3,14 @@
     Created on : 20 jul. 2024, 3:37:25 p. m.
     Author     : livia
 --%>
-
+<%@page import="java.util.ArrayList"%>
+<%@page import="ModeloDao.TareaDAO"%>
+<%@page import="Entidad.Tarea"%>
+<%@page import="ModeloDao.SoliMatsDAO"%>
+<%@page import="Entidad.SoliMats"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="es">
     <head>
@@ -83,128 +89,55 @@
                 </form>
             </div>
         </div>
+        <!--FIN NAV-->
+        <!-- CONTENIDO-->
         <div class="w-9/12 h-screen overflow-y-auto p-8 text-[#1E415A]" style="margin-left: 25%;">
-            <div><h1 class="text-3xl font-bold mb-8 text-center">SOLICITUDES DE MATERIALES</h1></div>
-            <div class="flex flex-wrap gap-10">  
+            <div>
+                <h1 class="text-3xl font-bold mb-8 text-center">SOLICITUDES DE MATERIALES</h1>
+            </div>
+            <%
+                List<Tarea> ta = TareaDAO.listT();
+                SoliMatsDAO smdao = new SoliMatsDAO();
+                for (Tarea tac : ta) {
+            %>
+            <!--SOLICITUD CARD-->
+            <div class="flex flex-wrap gap-6 mb-6 justify-center">
                 <div name="card" class="border-2 border-black h-72 mx-auto text">
-                    <div class="w-96 h-60 bg-white ">
+                    <div class="w-96 h-60 bg-white p-4">
                         <table class="w-full text-xl text-center">
                             <tr>
-                                <td colspan="2" class="py-4 font-bold text-2xl">0001-02</td>
+                                <td colspan="2" class="py-4 font-bold text-2xl">001-0<%= tac.getCodTarea()%></td>
                             </tr>
-                            <br>
                             <tr>
                                 <td class="font-bold">Técnico</td>
-                                <td class="py-5">Lujan Carrion</td>
+                                <td class="py-5"><%= smdao.obtTec(tac.getCodTarea())%></td>
                             </tr>
                             <tr>
                                 <td class="font-bold">Fecha</td>
-                                <td class="py-5">18/05/2024</td>
+                                <td class="py-5"><%= tac.getFechInicio()%></td>
                             </tr>
                         </table>
                     </div>
-                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
-                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>VER DETALLES</h1></a>
-                    </div>
-                </div>
-                <div name="card" class="border-2 border-black h-72 mx-auto text">
-                    <div class="w-96 h-60 bg-white ">
-                        <table class="w-full text-xl text-center">
-                            <tr>
-                                <td colspan="2" class="py-4 font-bold text-2xl">0001-02</td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td class="font-bold">Técnico</td>
-                                <td class="py-5">Lujan Carrion</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Fecha</td>
-                                <td class="py-5">18/05/2024</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
-                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>VER DETALLES</h1></a>
-                    </div>
-                </div>
-                <div name="card" class="border-2 border-black h-72 mx-auto text">
-                    <div class="w-96 h-60 bg-white ">
-                        <table class="w-full text-xl text-center">
-                            <tr>
-                                <td colspan="2" class="py-4 font-bold text-2xl">0001-02</td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td class="font-bold">Técnico</td>
-                                <td class="py-5">Lujan Carrion</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Fecha</td>
-                                <td class="py-5">18/05/2024</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
-                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>VER DETALLES</h1></a>
-                    </div>
-                </div>
-                <div name="card" class="border-2 border-black h-72 mx-auto text">
-                    <div class="w-96 h-60 bg-white ">
-                        <table class="w-full text-xl text-center">
-                            <tr>
-                                <td colspan="2" class="py-4 font-bold text-2xl">0001-02</td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td class="font-bold">Técnico</td>
-                                <td class="py-5">Lujan Carrion</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Fecha</td>
-                                <td class="py-5">18/05/2024</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
-                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>VER DETALLES</h1></a>
-                    </div>
-                </div>
-                <div name="card" class="border-2 border-black h-72 mx-auto text">
-                    <div class="w-96 h-60 bg-white ">
-                        <table class="w-full text-xl text-center">
-                            <tr>
-                                <td colspan="2" class="py-4 font-bold text-2xl">0001-02</td>
-                            </tr>
-                            <br>
-                            <tr>
-                                <td class="font-bold">Técnico</td>
-                                <td class="py-5">Lujan Carrion</td>
-                            </tr>
-                            <tr>
-                                <td class="font-bold">Fecha</td>
-                                <td class="py-5">18/05/2024</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold content-center mx-auto">
-                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center"><h1>VER DETALLES</h1></a>
+                    <div class="w-96 h-12 bg-[#1E415A] hover:bg-[#031936] text-white text-center font-bold flex items-center justify-center mx-auto">
+                        <a href="#VentEmer" data-modal-toggle="default-modal" class="block focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                            <h1>VER DETALLES</h1>
+                        </a>
                     </div>
                 </div>
             </div>
-            <!--VENTANA AL PRESIOANR EL BOTON-->
+            <!--FIN SOLICITUD CARD-->
+            <!--VENTANA AL PRESIONAR EL BOTÓN-->
             <div id="VentEmer" class="hidden fixed inset-0 bg-gray-800 bg-opacity-75 items-center justify-center overflow-x-auto">
                 <div class="bg-white rounded-lg overflow-hidden shadow-xl w-2/3 p-6 relative">
                     <div class="mx-5 shadow-xl">
-                        <h1 class="text-3xl font-bold mt-10 text-center">Detalles de Solicitud<br>0001-02</h1>
+                        <h1 class="text-3xl font-bold mt-10 text-center">Detalles de Solicitud<br>/-/-/</h1>
                         <div class="flex flex-wrap mr-16">
                             <div class="w-2/5 mt-10 ml-16">
-                                <h2 class="py-3"><p class="font-bold">Tecnico:</p> Lujan Carrion</h2>
-                                <h2 class="py-3"><p class="font-bold">Fecha:</p> 20/05/2024</h2>
-                                <h2 class="py-3"><p class="font-bold">Sede:</p> XXXXXXX</h2>
+                                <h2 class="py-3"><p class="font-bold">Tecnico:</p> <%=smdao.obtTec(tac.getCodTarea())%></h2>
+                                <h2 class="py-3"><p class="font-bold">Fecha:</p><%= tac.getFechInicio()%></h2>
                             </div>
                             <div class="w-2/5 py-10 ml-16">
-                                <h2 class="py-3"><p class="font-bold">Almacen:</p> XXXXXXXXXX</h2>
+                                <h2 class="py-3"><p class="font-bold">Almacen:</p></h2>
                                 <div class="mx-auto bg-[#ECEFF4] px-10 border-2 border-black rounded-lg">
                                     <h1 class="text-center font-bold">Pedido</h1>
                                     <div class="max-w-4xl mx-auto">
@@ -214,21 +147,23 @@
                                                     <tr>
                                                         <th class="px-4 py-2 border-b border-gray-200 text-left">Material</th>
                                                         <th class="px-4 py-2 border-b border-gray-200 text-left">Cantidad</th>
+                                                        <th class="px-4 py-2 border-b border-gray-200 text-left">Almacen</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <%
+                                                        int idT = tac.getCodTarea();
+                                                        List<SoliMats> sm = SoliMatsDAO.listSMTa(tac.getCodTarea());
+                                                        for (SoliMats sms : sm) {
+                                                    %>    
                                                     <tr>
-                                                        <td class="px-4 py-3 border-b">Material 1</td>
-                                                        <td class="px-4 py-3 border-b">3 Unidades</td>
+                                                        <td class="px-4 py-3 border-b"> <%= smdao.obtMat(sms.getCodMaterial())%></td>
+                                                        <td class="px-4 py-3 border-b"> <%= sms.getCantidad()%> Unidades</td>
+                                                        <td class="px-4 py-3 border-b"> <%= smdao.obtSede(sms.getCodMaterial())%></td>
                                                     </tr>
-                                                    <tr>
-                                                        <td class="px-4 py-3 border-b">Material 2</td>
-                                                        <td class="px-4 py-3 border-b">5 Unidades</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="px-4 py-3 border-b">Material 3</td>
-                                                        <td class="px-4 py-3 border-b">7 Unidades</td>
-                                                    </tr>
+                                                    <%
+                                                        }
+                                                    %>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -236,11 +171,22 @@
                                 </div>
                             </div>
                         </div>
-                        <a href="#" class="bg-red-500 text-white px-4 py-2 rounded absolute top-5 right-4">Cerrar</a>
+                        <form method="post" action="<%= request.getContextPath()%>/ControlMaterialServlet">
+                            <% for (SoliMats sms : sm) {%>
+                            <input type="hidden" name="codMaterial" value="<%= sms.getCodMaterial()%>">
+                            <input type="hidden" name="cantidad" value="<%= sms.getCantidad()%>">
+                            <% }%>
+                            <input type="hidden" name="codTarea" value="<%= tac.getCodTarea()%>">
+                            <button name="accion" id="aprobar" value="aprobar" class="bg-red-500 text-white px-4 py-2 rounded">Aprobar</button>
+                        </form>
                     </div>
                 </div>  
             </div>
-
+            <%
+                }
+            %>
+            <!--FINVENTANA DE CARD-->
+        </div>
 
     </body>
 </html>
